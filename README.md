@@ -1,2 +1,2 @@
-# Display-Profile-Switcher
-Display ICC/ICM Profile Switcher
+# Display-Profile-Calibrator
+Display ICC/ICM Calibrator

@@ -59,3 +59,76 @@ void error(char *fmt, ...), warning(char *fmt, ...), message(char *fmt, ...);
 #define BE_INT(a) (a)
 #define BE_SHORT(a) (a)
 #endif
+
+/* internal state struct */
+struct dpc_state_t
+{
+    unsigned int verbose;
+    float redGamma;
+    float redMin;
+    float redMax;
+    float greenGamma;
+    float greenMin;
+    float greenMax;
+    float blueGamma;
+    float blueMin;
+    float blueMax;
+    float gamma_cor;
+} dpc_state = {0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0};
+
+void usage(void)
+{
+    fprintf(stdout, "Display Profile Calibrator %s\n", DPC_VERSION);
+    fprintf(stdout, "sfc99892\n");
+    fprintf(stdout, "USE THIS PROGRAM AT YOUR OWN RISK!\n");
+    fprintf(stdout, "IT MAY DAMAGE YOUR COMPUTER!!!\n");
+    fprintf(stdout, "\n");
+    fprintf(stdout, "Usage:  dpc [-options] ICCPROFILE\n");
+    fprintf(stdout, "     or dpc [-options] -alter\n");
+    fprintf(stdout, "\n");
+    fprintf(stdout, "Other Commands:\n");
+#ifndef _WIN32
+    fprintf(stdout, "    -display <host:dpy>     or -d\n");
+    fprintf(stdout, "    -screen <screen-#>      or -s\n");
+    fprintf(stdout, "    -output <output-#>      or -o\n");
+#else
+    fprintf(stdout, "    -screen <monitor-#>     or -s\n");
+#endif
+#ifdef FGLRX
+    fprintf(stdout, "    -controller <card-#>    or -x\n");
+#endif
+    fprintf(stdout, "    -clear                  or -c\n");
+    fprintf(stdout, "    -noaction <LUT-size>    or -n\n");
+    fprintf(stdout, "    -verbose                or -v\n");
+    fprintf(stdout, "    -printramps             or -p\n");
+    fprintf(stdout, "    -loss                   or -l\n");
+    fprintf(stdout, "    -invert                 or -i\n");
+    fprintf(stdout, "    -gammacor <gamma>       or -gc\n");
+    fprintf(stdout, "    -brightness <percent>   or -b\n");
+    fprintf(stdout, "    -contrast <percent>     or -co\n");
+    fprintf(stdout, "    -red <gamma>   <brightness-percentage> <contrast-percentage>\n");
+    fprintf(stdout, "    -green <gamma> <brightness-percentage> <contrast-percentage>\n");
+    fprintf(stdout, "    -blue <gamma>  <brightness-percentage> <contrast-percentage>\n");
+#ifndef FGLRX
+    fprintf(stdout, "    -alter                  or -a\n");
+#endif
+    fprintf(stdout, "    -help                   or -h\n");
+    fprintf(stdout, "    -version\n");
+    fprintf(stdout, "\n");
+    fprintf(stdout,
+            "last parameter must be an ICC profile containing a vcgt-tag\n");
+    fprintf(stdout, "\n");
+#ifndef _WIN32
+    fprintf(stdout, "Example: ./dpc -d :0 -s 0 -v bluish.icc\n");
+#else
+    fprintf(stdout, "Example: ./dpc -v bluish.icc\n");
+#endif
+#ifndef FGLRX
+    fprintf(stdout, "Example: ./dpc -red 1.1 10.0 100.0\n");
+#endif
+    fprintf(stdout, "*** If you mess up your screen display, use command below to cancel it: ***\n");
+    fprintf(stdout, "*** ./dpc -clear\n");
+    fprintf(stdout, "\n");
+    exit(0);
+}
+

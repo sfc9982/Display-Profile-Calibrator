@@ -4,7 +4,7 @@ Display ICC/ICM Calibrator
 
 ## Make
 
-Recommended Compile Enviroment:
+Recommended Compile Environment:
 
 
 **MSYS2 MinGW 32-bit**

@@ -13,4 +13,4 @@ then, run;
 
 `make` or `make win_dpc`
 
-**Be aware Linux is currently now supported!**
+**Be aware Linux is currently not supported!**

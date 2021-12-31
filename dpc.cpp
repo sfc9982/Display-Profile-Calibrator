@@ -1,11 +1,11 @@
-#include <ctype.h>
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
-#include <fcntl.h>
-#include <string.h>
-#include <sys/types.h>
+#include <cctype>
+#include <cerrno>
+#include <cstdio>
+#include <cstdlib>
+#include <cstdarg>
+#include <cfcntl>
+#include <cstring>
+#include <sys/ctypes>
 
 /* Use _WIN32 to automaticlly detect real system OS */
 #ifndef _WIN32
@@ -29,7 +29,7 @@
 
 #endif
 
-#include <math.h>
+#include <cmath>
 
 /* the 4-byte marker for the vcgt-Tag */
 #define VCGT_TAG 0x76636774L

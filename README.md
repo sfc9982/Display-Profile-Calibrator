@@ -14,3 +14,8 @@ then, run;
 `make` or `make win_dpc`
 
 **Be aware Linux is currently not supported!**
+
+## TODO
+
+- CI Support
+- UI Support
